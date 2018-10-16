@@ -1,0 +1,38 @@
+clear;clc
+%批量打开mat文件并放入cell元胞
+num=cell(1,300);
+ for i=1:300
+   t=strcat('gene_',num2str(i),'.dat');
+   num{i}=t;
+ end
+gcell=cell(1,300);
+for i=1:300
+    temp=['gene_',num2str(i),'.dat'];
+    gcell{i}=textread(temp,'%s');
+end
+
+%开始标记
+gcell{301}=[0];
+cell{301}=[0];
+c={zeros(1,1+length(gcell{1}))}
+for i=1:300
+    t=length(gcell{i});
+      for j=1:t
+      if strcmp(gcell{i}(j),'rs2803337')
+          c{i}(1,j)=1;
+      else  c{i}(1,j)=0;
+      t=length(gcell{i+1});
+      c{i+1}=zeros(1,t);    
+end
+      end
+end
+
+%显示标记元素
+Gene=zeros[1,10];
+for i=1:300
+    r=find(c{i}==1);
+    Gene(i)
+    
+    
+
+    

@@ -1,0 +1,1 @@
+strcat('gene_',num2str(i),'.dat')
